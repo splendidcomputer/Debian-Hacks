@@ -2,7 +2,7 @@
 Debian Hacks
 
 ### Add _Ctrl+Alt+T_ short key for the terminal:
-* Press _super_key_
+* Press _super_key_, then search for _shortcuts_
 
 * Edit the sources list:
 
