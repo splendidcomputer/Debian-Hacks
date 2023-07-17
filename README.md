@@ -49,3 +49,8 @@ Use the usermod command to add the user to the sudo group. Replace username with
 ```
 sudo usermod -aG sudo username
 ```
+
+### error: externally-managed-environment
+Please refer to these links
+https://askubuntu.com/questions/1465218/pip-error-on-ubuntu-externally-managed-environment-%C3%97-this-environment-is-extern
+https://www.omgubuntu.co.uk/2023/04/pip-install-error-externally-managed-environment-fix
