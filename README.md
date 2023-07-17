@@ -55,3 +55,12 @@ Please refer to these links:
 
 https://askubuntu.com/questions/1465218/pip-error-on-ubuntu-externally-managed-environment-%C3%97-this-environment-is-extern
 https://www.omgubuntu.co.uk/2023/04/pip-install-error-externally-managed-environment-fix
+
+### Activate your environment
+
+If you're using virtualenv or venv, you should activate the environment before running your Python script. This can be done using the source command, like so:
+```
+(ll) mostafa@chat-ai:~/programming/lit-llama$ source env/bin/activate
+(env) mostafa@chat-ai:~/programming/lit-llama$ python3 scripts/download.py --repo_id openlm-research/open_llama_7b --local_dir checkpoints/open-llama/7B
+```
+
