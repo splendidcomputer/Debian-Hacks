@@ -15,6 +15,25 @@ We should comment out the _deb cdrom:[Debian GNU/Linux 11.7.0 _Bullseye_ - Offic
 
 ```sudo nano /etc/apt/sources.list```
 
+The sources list should look like this:
+```
+  GNU nano 5.4                  /etc/apt/sources.list                           
+# deb cdrom:[Debian GNU/Linux 11.7.0 _Bullseye_ - Official amd64 DVD Binary-1 2>
+
+# deb cdrom:[Debian GNU/Linux 11.7.0 _Bullseye_ - Official amd64 DVD Binary-1 2>
+
+deb http://deb.debian.org/debian/ bullseye main contrib non-free
+deb-src http://deb.debian.org/debian/ bullseye main contrib non-free
+
+deb http://security.debian.org/debian-security bullseye-security main contrib n>
+deb-src http://security.debian.org/debian-security bullseye-security main contr>
+
+# bullseye-updates, to get updates before a point release is made;
+# see https://www.debian.org/doc/manuals/debian-reference/ch02.en.html#_updates>
+deb http://deb.debian.org/debian/ bullseye-updates main contrib non-free
+deb-src http://deb.debian.org/debian/ bullseye-updates main contrib non-free
+```
+
 ### Install NVIDIA Drivers
 First, **disable the secure boot** feature from your BIOS.
 
