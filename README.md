@@ -17,5 +17,9 @@ We should comment out the _deb cdrom:[Debian GNU/Linux 11.7.0 _Bullseye_ - Offic
 
 ### Install NVIDIA Drivers
 First, **disable the secure boot** feature from your BIOS.
-Please follow the instructions in this link:
+
+Then, please follow the instructions in this link:
 https://www.if-not-true-then-false.com/2021/debian-ubuntu-linux-mint-nvidia-guide/
+
+or you can use this command to install the Nvidia driver:
+```sudo apt-get install nvidia-driver```
