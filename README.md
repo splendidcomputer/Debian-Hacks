@@ -42,3 +42,10 @@ https://www.if-not-true-then-false.com/2021/debian-ubuntu-linux-mint-nvidia-guid
 
 or you can use this command to install the Nvidia driver:
 ```sudo apt-get install nvidia-driver```
+
+### Give sudo privileges to a user:
+Use the usermod command to add the user to the sudo group. Replace username with the name of the user you want to grant superuser privileges to:
+
+```
+sudo usermod -aG sudo username
+```
