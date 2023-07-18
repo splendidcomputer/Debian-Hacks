@@ -62,7 +62,7 @@ Driver "modesetting"
 
 ```
 
-First, you should remove the currently installed NVIDIA driver to avoid conflicts:
+Remove the currently installed NVIDIA driver:
 ```
 sudo apt-get purge nvidia*
 ```
