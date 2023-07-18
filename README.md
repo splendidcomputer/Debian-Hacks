@@ -37,6 +37,10 @@ deb-src http://deb.debian.org/debian/ bullseye-updates main contrib non-free
 ### Install NVIDIA Drivers
 First, **disable the secure boot** feature from your BIOS.
 
+```
+sudo apt install nvidia-driver
+```
+
 Then, please follow the instructions in this link:
 https://chat.openai.com/share/dcafe9f8-31ea-4650-b4b9-58ee9434b65f
 
