@@ -38,10 +38,7 @@ deb-src http://deb.debian.org/debian/ bullseye-updates main contrib non-free
 First, **disable the secure boot** feature from your BIOS.
 
 Then, please follow the instructions in this link:
-https://www.if-not-true-then-false.com/2021/debian-ubuntu-linux-mint-nvidia-guide/
-
-or you can use this command to install the Nvidia driver:
-```sudo apt-get install nvidia-driver```
+https://chat.openai.com/share/dcafe9f8-31ea-4650-b4b9-58ee9434b65f
 
 ### Give sudo privileges to a user:
 Use the usermod command to add the user to the sudo group. Replace username with the name of the user you want to grant superuser privileges to:
