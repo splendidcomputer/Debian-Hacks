@@ -40,77 +40,7 @@ First, **disable the secure boot** feature from your BIOS.
 Then, please follow the instructions in this link:
 https://chat.openai.com/share/dcafe9f8-31ea-4650-b4b9-58ee9434b65f
 
-Here are the steps to install an NVIDIA driver on Debian. In your case, I'll guide you to install the version 535.54.03. Please make sure to replace the version number with the one you want if it's different. Before you proceed, you should note that handling graphics drivers can be risky, and if something goes wrong, it can leave your system in a non-bootable state. Always make sure to backup any critical data.
 
-First, you should remove the currently installed NVIDIA driver to avoid conflicts:
-
-bash
-Copy code
-sudo apt-get purge nvidia*
-Next, make sure that your system is up-to-date:
-
-bash
-Copy code
-sudo apt-get update
-sudo apt-get upgrade
-In order to compile the NVIDIA driver, you need to install some dependencies:
-
-bash
-Copy code
-sudo apt-get install build-essential gcc-multilib dkms
-Now, you can download the NVIDIA driver. You can use wget to download it from the NVIDIA website. You'll need to know the exact URL, which you can find by searching the NVIDIA site:
-
-bash
-Copy code
-wget http://us.download.nvidia.com/XFree86/Linux-x86_64/535.54.03/NVIDIA-Linux-x86_64-535.54.03.run
-Please replace the URL with the actual one for the version you want if it's different.
-
-Next, you need to disable the nouveau driver, which is an open-source driver for NVIDIA cards. Edit the /etc/modprobe.d/blacklist-nouveau.conf file:
-
-bash
-Copy code
-sudo nano /etc/modprobe.d/blacklist-nouveau.conf
-Add these lines to the file:
-
-Copy code
-blacklist nouveau
-options nouveau modeset=0
-Save the file and exit the editor. Then, update your initial ramdisk:
-
-bash
-Copy code
-sudo update-initramfs -u
-After that, you should reboot your computer:
-
-bash
-Copy code
-sudo reboot
-After rebooting, you need to exit the graphical interface. You can do that by switching to a different tty (e.g., tty3) using Ctrl + Alt + F3. Then, stop the display manager. Depending on what display manager you're using (e.g., lightdm, gdm, sddm, etc.), the command would be one of the following:
-
-bash
-Copy code
-sudo systemctl stop lightdm
-sudo systemctl stop gdm
-sudo systemctl stop sddm
-Now, you should be able to install the NVIDIA driver:
-
-bash
-Copy code
-chmod +x NVIDIA-Linux-x86_64-535.54.03.run
-sudo ./NVIDIA-Linux-x86_64-535.54.03.run
-Follow the on-screen instructions to install the driver.
-
-After the installation, reboot your computer:
-
-bash
-Copy code
-sudo reboot
-After rebooting, you can verify the installation of the driver using the following command:
-
-bash
-Copy code
-nvidia-smi
-You should see the version number of the NVIDIA driver displayed.
 
 ### Give sudo privileges to a user:
 Use the usermod command to add the user to the sudo group. Replace username with the name of the user you want to grant superuser privileges to:
