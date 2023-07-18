@@ -40,7 +40,17 @@ First, **disable the secure boot** feature from your BIOS.
 Then, please follow the instructions in this link:
 https://chat.openai.com/share/dcafe9f8-31ea-4650-b4b9-58ee9434b65f
 
+### Uninstall NVIDIA Drivers
+First, you should remove the currently installed NVIDIA driver to avoid conflicts:
+```
+sudo apt-get purge nvidia*
+```
+Next, make sure that your system is up-to-date:
 
+```
+sudo apt-get update
+sudo apt-get upgrade
+```
 
 ### Give sudo privileges to a user:
 Use the usermod command to add the user to the sudo group. Replace username with the name of the user you want to grant superuser privileges to:
