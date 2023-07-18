@@ -7,7 +7,13 @@ Debian Hacks
   * Name: **Gnome Terminal**
   * Command: **gnome-terminal**
   * Shortcut: **Ctrl+Alt+T**
-  
+
+### Give sudo privileges to a user:
+Use the usermod command to add the user to the sudo group. Replace username with the name of the user you want to grant superuser privileges to:
+
+```
+sudo usermod -aG sudo username
+```
 
 ### Edit the sources list:
 
@@ -77,12 +83,7 @@ sudo apt-get update
 sudo apt-get upgrade
 ```
 
-### Give sudo privileges to a user:
-Use the usermod command to add the user to the sudo group. Replace username with the name of the user you want to grant superuser privileges to:
 
-```
-sudo usermod -aG sudo username
-```
 
 ### error: externally-managed-environment
 Please refer to these links:
