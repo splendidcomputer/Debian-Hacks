@@ -41,6 +41,27 @@ Then, please follow the instructions in this link:
 https://chat.openai.com/share/dcafe9f8-31ea-4650-b4b9-58ee9434b65f
 
 ### Uninstall NVIDIA Drivers
+Open a terminal and enter the following command to edit the xorg.conf file using a text editor:
+```
+sudo nano /etc/X11/xorg.conf
+```
+
+Locate the "Device" section in the xorg.conf file that corresponds to your NVIDIA graphics card. It should look similar to the lines you mentioned:
+
+```
+Section "Device"
+    Identifier "Device0"
+    Driver "nvidia"
+    Vendorname "NVIDIA corporation"
+    BusID "PCI:1:0:0"
+EndSection
+```
+Modify the "Driver" line to use the "modesetting" driver instead of "nvidia":
+```
+Driver "modesetting"
+
+```
+
 First, you should remove the currently installed NVIDIA driver to avoid conflicts:
 ```
 sudo apt-get purge nvidia*
