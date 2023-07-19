@@ -155,7 +155,7 @@ Then we should do is to go into the gnome-software app and click on the _Restart
 
 ### [The First 12 Things You Should Do After Installing Debian 12 “Bookworm”!](https://www.learnlinux.tv/debian-12-12/)
 
-### Install TeX Live!
+### Install TeXLive!
 First, locate the downloaded ISO file. The file should be named something like texlive.iso.
 
 Mount the ISO file. To do this, you first need to create a directory that will serve as the mount point. Open your terminal and type:
