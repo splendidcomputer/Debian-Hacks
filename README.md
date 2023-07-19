@@ -154,3 +154,24 @@ sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub
 Then we should do is to go into the gnome-software app and click on the _Restart Now_ button. Then, it will refresh. Now, we should have access to additional software.
 
 ### [The First 12 Things You Should Do After Installing Debian 12 “Bookworm”!](https://www.learnlinux.tv/debian-12-12/)
+
+### Install TeX Live!
+First, locate the downloaded ISO file. The file should be named something like texlive.iso.
+
+Mount the ISO file. To do this, you first need to create a directory that will serve as the mount point. Open your terminal and type:
+```
+sudo mkdir /mnt/texlive
+```
+Then, mount the ISO file to this directory:
+```
+sudo mount -o loop /path/to/texlive.iso /mnt/texlive
+```
+
+Replace /path/to/texlive.iso with the path to the ISO file on your system.
+
+Install TeX Live. Change to the directory where the ISO file is mounted and run the installer:
+
+```
+cd /mnt/texlive
+sudo ./install-tl
+```
