@@ -144,4 +144,8 @@ If you're using virtualenv or venv, you should activate the environment before r
 (ll) mostafa@chat-ai:~/programming/lit-llama$ source env/bin/activate
 (env) mostafa@chat-ai:~/programming/lit-llama$ python3 scripts/download.py --repo_id openlm-research/open_llama_7b --local_dir checkpoints/open-llama/7B
 ```
-
+### Enable Flatpak
+Open the terminal, then we should install two packages:
+```
+sudo apt install flatpak gnome-software-plugin-flatpak
+```
