@@ -175,3 +175,26 @@ Install TeX Live. Change to the directory where the ISO file is mounted and run 
 cd /mnt/texlive
 sudo ./install-tl
 ```
+This will start the TeX Live installer. It's interactive and you should be able to just press I and then Enter to start the installation with the default settings. If you need to customize the installation, you can do so within this installer.
+
+Set up the PATH. After the installation, you need to add TeX Live binaries to your system PATH. Typically, they are installed under /usr/local/texlive/2023/bin/x86_64-linux (replace 2023 with the year of your TeX Live edition and x86_64-linux with your architecture, if different).
+
+You can add this to your PATH by editing your .bashrc or .bash_profile file (use nano, vim, or any text editor you prefer):
+
+```
+nano ~/.bashrc
+```
+Then, add the following line at the end of the file:
+```
+export PATH="/usr/local/texlive/2023/bin/x86_64-linux:$PATH"
+```
+Save and exit. To apply the changes, close and reopen your terminal, or source the updated file:
+```
+source ~/.bashrc
+```
+Unmount the ISO. After you have finished the installation, you can unmount the ISO file:
+```
+sudo umount /mnt/texlive
+```
+Now, you should have TeX Live installed on your system and you can use it to create and compile your TeX documents.
+
