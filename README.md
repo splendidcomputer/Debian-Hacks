@@ -147,5 +147,7 @@ If you're using virtualenv or venv, you should activate the environment before r
 ### Enable Flatpak
 Open the terminal, then we should install two packages:
 ```
-sudo apt install flatpak gnome-software-plugin-flatpak
+sudo apt install gnome-software-plugin-flatpak
+
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 ```
