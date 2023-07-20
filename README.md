@@ -97,19 +97,19 @@ You can create a virtual environment in Debian by using either `venv` or `virtua
 
 1. First, you need to ensure that you have the `venv` module installed. In Python 3.3 and later, it is included by default. If you need to install it separately, you can do so by running:
    
-   ```bash
+   ```
    sudo apt-get install python3-venv
    ```
 
 2. Now, navigate to the directory where you want to create your virtual environment. For example, if you want to create a directory in your home directory called `my_env`, you would first navigate to your home directory:
    
-   ```bash
+   ```
    cd ~
    ```
 
 3. Then, you can create your virtual environment by running:
    
-   ```bash
+   ```
    python3 -m venv my_env
    ```
    
