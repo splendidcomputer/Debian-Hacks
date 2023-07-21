@@ -50,6 +50,11 @@ sudo apt install nvidia-driver
 Then, please follow the instructions in this link:
 https://chat.openai.com/share/dcafe9f8-31ea-4650-b4b9-58ee9434b65f
 
+### Recognise the second connected display
+```
+xrandr
+```
+
 ### Uninstall NVIDIA Drivers
 Open a terminal and enter the following command to edit the xorg.conf file using a text editor:
 ```
@@ -197,4 +202,5 @@ Unmount the ISO. After you have finished the installation, you can unmount the I
 sudo umount /mnt/texlive
 ```
 Now, you should have TeX Live installed on your system and you can use it to create and compile your TeX documents.
+
 
