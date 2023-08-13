@@ -1,0 +1,1 @@
+Here I jot down my learning path of the **Bash Scripting**
