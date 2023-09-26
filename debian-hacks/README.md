@@ -287,3 +287,16 @@ Creating a desktop shortcut for a program in Debian involves a few steps. You ca
 Note that some desktop environments like GNOME might also allow you to directly create shortcuts by right-clicking on the desktop or the application menu. This can be a more user-friendly way to create shortcuts.
 
 Remember to replace placeholders like `YourProgram` and file paths with actual values relevant to your setup.
+
+### Warnings
+
+**AnyDesk Warning**:
+
+`W: http://deb.anydesk.com/dists/all/InRelease: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.`
+
+**Solution:**
+
+```
+cd /etc/apt
+sudo cp trusted.gpg trusted.gpg.d
+```
