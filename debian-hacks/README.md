@@ -300,3 +300,19 @@ Remember to replace placeholders like `YourProgram` and file paths with actual v
 cd /etc/apt
 sudo cp trusted.gpg trusted.gpg.d
 ```
+
+# Installing RStudio on Debian 12
+
+To install RStudio on Debian 12, you can follow these steps:
+
+```bash
+# Download and install the required version of OpenSSL (libssl1.1):
+sudo wget http://security.debian.org/debian-security/pool/updates/main/o/openssl/libssl1.1_1.1.1n-0+deb10u6_amd64.deb
+sudo dpkg -i libssl1.1_1.1.1n-0+deb10u6_amd64.deb
+
+# Download the RStudio package:
+wget https://download1.rstudio.org/electron/focal/amd64/rstudio-2023.09.0-463-amd64.deb
+
+# Install RStudio using gdebi:
+sudo gdebi rstudio-2023.09.0-463-amd64.deb
+```
