@@ -316,3 +316,7 @@ wget https://download1.rstudio.org/electron/focal/amd64/rstudio-2023.09.0-463-am
 # Install RStudio using gdebi:
 sudo gdebi rstudio-2023.09.0-463-amd64.deb
 ```
+# Replacin files names as well as thier contents in a directory
+```bash
+find /path/to/project -type d -name .git -prune -o -type f -exec sh -c 'echo "Processing {}"; sed -i "s/old_string/new_string/g" "{}"' \;
+```
