@@ -48,7 +48,7 @@ deb-src http://deb.debian.org/debian/ bullseye-updates main contrib non-free
 
 First, **disable the secure boot** feature from your BIOS.
 
-```
+```bash
 sudo apt install nvidia-driver
 ```
 
@@ -57,7 +57,7 @@ https://chat.openai.com/share/dcafe9f8-31ea-4650-b4b9-58ee9434b65f
 
 ### Recognise the second connected display
 
-```
+```bash
 xrandr
 ```
 
@@ -65,13 +65,13 @@ xrandr
 
 Open a terminal and enter the following command to edit the xorg.conf file using a text editor:
 
-```
+```bash
 sudo nano /etc/X11/xorg.conf
 ```
 
 Locate the "Device" section in the xorg.conf file that corresponds to your NVIDIA graphics card. It should look similar to the lines you mentioned:
 
-```
+```bash
 Section "Device"
     Identifier "Device0"
     Driver "nvidia"
@@ -82,20 +82,20 @@ EndSection
 
 Modify the "Driver" line to use the "modesetting" driver instead of "nvidia":
 
-```
+```bash
 Driver "modesetting"
 
 ```
 
 Remove the currently installed NVIDIA driver:
 
-```
+```bash
 sudo apt-get purge nvidia*
 ```
 
 Next, make sure that your system is up-to-date:
 
-```
+```bash
 sudo apt-get update
 sudo apt-get upgrade
 ```
@@ -113,19 +113,19 @@ You can create a virtual environment in Debian by using either `venv` or `virtua
 
 1. First, you need to ensure that you have the `venv` module installed. In Python 3.3 and later, it is included by default. If you need to install it separately, you can do so by running:
 
-   ```
+   ```bash
    sudo apt-get install python3-venv
    ```
 
 2. Now, navigate to the directory where you want to create your virtual environment. For example, if you want to create a directory in your home directory called `my_env`, you would first navigate to your home directory:
 
-   ```
+   ```bash
    cd ~
    ```
 
 3. Then, you can create your virtual environment by running:
 
-   ```
+   ```bash
    python3 -m venv my_env
    ```
 
@@ -157,7 +157,7 @@ Remember, every time you want to work in your virtual environment, you need to a
 
 If you're using virtualenv or venv, you should activate the environment before running your Python script. This can be done using the source command, like so:
 
-```
+```bash
 (ll) mostafa@chat-ai:~/programming/lit-llama$ source env/bin/activate
 (env) mostafa@chat-ai:~/programming/lit-llama$ python3 scripts/download.py --repo_id openlm-research/open_llama_7b --local_dir checkpoints/open-llama/7B
 ```
@@ -166,7 +166,7 @@ If you're using virtualenv or venv, you should activate the environment before r
 
 Open the terminal, then we should install two packages:
 
-```
+```bash
 sudo apt install gnome-software-plugin-flatpak
 
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
@@ -182,13 +182,13 @@ First, locate the downloaded ISO file. The file should be named something like t
 
 Mount the ISO file. To do this, you first need to create a directory that will serve as the mount point. Open your terminal and type:
 
-```
+```bash
 sudo mkdir /mnt/texlive
 ```
 
 Then, mount the ISO file to this directory:
 
-```
+```bash
 sudo mount -o loop /path/to/texlive.iso /mnt/texlive
 ```
 
@@ -219,13 +219,13 @@ export PATH="/usr/local/texlive/2023/bin/x86_64-linux:$PATH"
 
 Save and exit. To apply the changes, close and reopen your terminal, or source the updated file:
 
-```
+```bash
 source ~/.bashrc
 ```
 
 Unmount the ISO. After you have finished the installation, you can unmount the ISO file:
 
-```
+```bash
 sudo umount /mnt/texlive
 ```
 
@@ -296,7 +296,7 @@ Remember to replace placeholders like `YourProgram` and file paths with actual v
 
 **Solution:**
 
-```
+```bash
 cd /etc/apt
 sudo cp trusted.gpg trusted.gpg.d
 ```
