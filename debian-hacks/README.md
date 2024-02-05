@@ -27,21 +27,21 @@ We should comment out the _deb cdrom:[Debian GNU/Linux 11.7.0 \_Bullseye_ - Offi
 The sources list should look like this:
 
 ```
-  GNU nano 5.4                  /etc/apt/sources.list
-# deb cdrom:[Debian GNU/Linux 11.7.0 _Bullseye_ - Official amd64 DVD Binary-1 2>
+# deb cdrom:[Debian GNU/Linux 12.4.0 _Bookworm_ - Official amd64 DVD Binary-1 2>
 
-# deb cdrom:[Debian GNU/Linux 11.7.0 _Bullseye_ - Official amd64 DVD Binary-1 2>
+# deb cdrom:[Debian GNU/Linux 12.4.0 _Bookworm_ - Official amd64 DVD Binary-1 2>
 
-deb http://deb.debian.org/debian/ bullseye main contrib non-free
-deb-src http://deb.debian.org/debian/ bullseye main contrib non-free
+deb http://deb.debian.org/debian/ bookworm main contrib non-free
+deb-src http://deb.debian.org/debian/ bookworm main contrib non-free
 
-deb http://security.debian.org/debian-security bullseye-security main contrib n>
-deb-src http://security.debian.org/debian-security bullseye-security main contr>
+deb http://security.debian.org/debian-security bookworm-security main contrib non-free
+deb-src http://security.debian.org/debian-security bookworm-security main contrib non-free
 
-# bullseye-updates, to get updates before a point release is made;
+# bookworm-updates, to get updates before a point release is made;
 # see https://www.debian.org/doc/manuals/debian-reference/ch02.en.html#_updates>
-deb http://deb.debian.org/debian/ bullseye-updates main contrib non-free
-deb-src http://deb.debian.org/debian/ bullseye-updates main contrib non-free
+deb http://deb.debian.org/debian/ bookworm-updates main contrib non-free
+deb-src http://deb.debian.org/debian/ bookworm-updates main contrib non-free
+
 ```
 
 ### Install NVIDIA Drivers
