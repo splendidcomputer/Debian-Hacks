@@ -176,7 +176,42 @@ Then we should do is to go into the gnome-software app and click on the _Restart
 
 ### [The First 12 Things You Should Do After Installing Debian 12 “Bookworm”!](https://www.learnlinux.tv/debian-12-12/)
 
-### Install TeXLive!
+### Install TeXLive! (First approach)
+
+To install TeX Live on Debian, you can use the package manager `apt`. Here's how you can do it:
+
+1. **Update Package Lists**: It's a good practice to update your package lists before installing new packages. Run the following command:
+   ```bash
+   sudo apt update
+   ```
+
+2. **Install TeX Live**: You can install the full TeX Live distribution or choose to install specific packages. For the full distribution, you can use the `texlive-full` package, but note that it's quite large. Alternatively, you can install individual packages as needed.
+
+   To install the full TeX Live distribution:
+   ```bash
+   sudo apt install texlive-full
+   ```
+
+   To install a smaller set of basic packages:
+   ```bash
+   sudo apt install texlive-base
+   ```
+
+   You can also install additional packages as needed. For example, if you're working with LaTeX documents, you might want to install `texlive-latex-extra`:
+   ```bash
+   sudo apt install texlive-latex-extra
+   ```
+
+3. **Verify Installation**: Once the installation is complete, you can verify that TeX Live is installed correctly by checking the version:
+   ```bash
+   tex --version
+   ```
+
+   This command should output the version information for TeX Live.
+
+That's it! TeX Live should now be installed on your Debian system. You can start using it to create and edit LaTeX documents. If you need additional packages or functionality, you can install them using `apt` as needed.
+
+### Install TeXLive! (Second approach)
 
 First, locate the downloaded ISO file. The file should be named something like texlive.iso.
 
