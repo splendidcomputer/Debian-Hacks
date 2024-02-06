@@ -266,6 +266,36 @@ sudo umount /mnt/texlive
 
 Now, you should have TeX Live installed on your system and you can use it to create and compile your TeX documents.
 
+### Install TeXStudio
+
+To install TeXStudio on Debian, you can use the package manager `apt`. Here's how to do it:
+
+1. **Update Package Lists**: Before installing any new packages, it's recommended to update your package lists:
+   ```bash
+   sudo apt update
+   ```
+
+2. **Install TexStudio**: TexStudio is available in the Debian repositories. You can install it using the following command:
+   ```bash
+   sudo apt install texstudio
+   ```
+
+3. **Verify Installation**: Once the installation is complete, you can verify that TexStudio is installed correctly by running it from the terminal:
+   ```bash
+   texstudio
+   ```
+   Alternatively, you can search for TexStudio in your desktop environment's application menu and launch it from there.
+
+4. **Optional**: If you encounter any issues or want to ensure that you have the latest version of TexStudio, you can download and install it from the official website. Here are the general steps:
+
+   - Go to the TexStudio website: [https://www.texstudio.org/](https://www.texstudio.org/)
+   - Download the appropriate package for Debian.
+   - Install the downloaded package using your package manager or by running it from the terminal.
+
+However, using the version from the official Debian repositories is generally recommended as it will be automatically updated along with the rest of your system's packages.
+
+That's it! TexStudio should now be installed on your Debian system, and you can use it for editing LaTeX documents. If you need any additional packages or assistance, feel free to ask!
+
 ### Create a Desktop Shortcut File
 
 Creating a desktop shortcut for a program in Debian involves a few steps. You can use the `.desktop` file format to create shortcuts. Here's a step-by-step guide:
