@@ -15,6 +15,11 @@ Debian Hacks
 Use the usermod command to add the user to the sudo group. Replace username with the name of the user you want to grant superuser privileges to:
 
 ```bash
+su -
+```
+
+
+```bash
 sudo usermod -aG sudo username
 ```
 
