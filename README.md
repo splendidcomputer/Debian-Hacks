@@ -1,6 +1,6 @@
 # Welcome to Debian Hacks!
 
-Here I gather useful tips, tricks, and tutorials about Linux.
+Here I gather some useful tips, tricks about Linux.
 
 * [Debian Hacks](/debian-hacks/README.md)
 * [Vim](/vim/vim-intro.md) - Master the powerful Vim editor.
