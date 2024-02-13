@@ -25,14 +25,14 @@ sudo usermod -aG sudo username
 
 ### Edit the sources list:
 
-We should comment out the _deb cdrom:[Debian GNU/Linux 12.4.0 \_Bullseye_ - Official amd64 DVD Binary-1 2>\_ from the sources list:
+We should comment out the _deb cdrom:[Debian GNU/Linux 12.5.0 \_Bullseye_ - Official amd64 DVD Binary-1 2>\_ from the sources list:
 
 `sudo nano /etc/apt/sources.list`
 
 The sources list should look like this:
 
 ```bash                                                                                         
-# deb cdrom:[Debian GNU/Linux 12.4.0 _Bookworm_ - Official amd64 DVD Binary-1 2>
+# deb cdrom:[Debian GNU/Linux 12.5.0 _Bookworm_ - Official amd64 DVD Binary-1 2>
 
 deb http://deb.debian.org/debian/ bookworm main contrib non-free non-free-firmware
 deb-src http://deb.debian.org/debian/ bookworm main contrib non-free non-free-firmware
