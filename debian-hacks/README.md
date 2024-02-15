@@ -185,6 +185,23 @@ To install TeX Live on Debian, you can use the package manager `apt`. Here's how
    sudo apt update
    ```
 
+**Configuring the partioning for the LVM**
+
+We should execute the [partition_setup.sh](../partition_setup.sh) file.
+
+make it executable with the chmod command:
+
+```bash
+Copy code
+chmod +x partition_setup.sh
+Finally, you can execute the script by running:
+```
+
+```bash
+Copy code
+./partition_setup.sh
+```
+
 2. **Install TeX Live**: You can install the full TeX Live distribution or choose to install specific packages. For the full distribution, you can use the `texlive-full` package, but note that it's quite large. Alternatively, you can install individual packages as needed.
 
    To install the full TeX Live distribution:
