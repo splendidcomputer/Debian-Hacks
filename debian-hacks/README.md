@@ -1,29 +1,45 @@
+```markdown
 # Debian-Hacks
 
-Debian Hacks
+## Table of Contents
+1. [Add Ctrl+Alt+T shortcut for the terminal](#add-ctrlaltt-shortcut-for-the-terminal)
+2. [Give sudo privileges to a user](#give-sudo-privileges-to-a-user)
+3. [Edit the sources list](#edit-the-sources-list)
+4. [Install NVIDIA Drivers](#install-nvidia-drivers)
+5. [Recognize the second connected display](#recognize-the-second-connected-display)
+6. [Uninstall NVIDIA Drivers](#uninstall-nvidia-drivers)
+7. [Fix error: externally-managed-environment](#fix-error-externally-managed-environment)
+8. [Everything you should know about venv](#everything-you-should-know-about-venv)
+9. [Activate your environment](#activate-your-environment)
+10. [Enable Flatpak](#enable-flatpak)
+11. [Configuration of the partitioning for the LVM](#configuration-of-the-partitioning-for-the-lvm)
+12. [The First 12 Things You Should Do After Installing Debian 12 “Bookworm”!](#the-first-12-things-you-should-do-after-installing-debian-12-bookworm)
+13. [Install TeXLive! (First approach)](#install-texlive-first-approach)
+14. [Install TeXLive! (Second approach)](#install-texlive-second-approach)
+15. [Install TeXStudio](#install-texstudio)
+16. [Create a Desktop Shortcut File](#create-a-desktop-shortcut-file)
+17. [Warnings](#warnings)
+18. [Installing RStudio on Debian 12](#installing-rstudio-on-debian-12)
+19. [Replacing all instances of a string in project directory excluding the .git](#replacing-all-instances-of-a-string-in-project-directory-excluding-the-git)
 
-### Add _Ctrl+Alt+T_ short key for the terminal:
+### Add Ctrl+Alt+T shortcut for the terminal
 
-- Press _super_key_, then search for _shortcuts_;
+- Press the _super key_, then search for _shortcuts_.
 - Press _+_
   - Name: **Gnome Terminal**
   - Command: **gnome-terminal**
   - Shortcut: **Ctrl+Alt+T**
 
-### Give sudo privileges to a user:
+### Give sudo privileges to a user
 
 Use the usermod command to add the user to the sudo group. Replace username with the name of the user you want to grant superuser privileges to:
 
 ```bash
 su -
-```
-
-
-```bash
 sudo usermod -aG sudo username
 ```
 
-### Edit the sources list:
+### Edit the sources list
 
 We should comment out the _deb cdrom:[Debian GNU/Linux 12.5.0 \_Bullseye_ - Official amd64 DVD Binary-1 2>\_ from the sources list:
 
@@ -55,7 +71,7 @@ First, **disable the secure boot** feature from your BIOS.
 sudo apt install nvidia-driver
 ```
 
-### Recognise the second connected display
+### Recognize the second connected display
 
 ```bash
 xrandr
@@ -84,7 +100,6 @@ Modify the "Driver" line to use the "modesetting" driver instead of "nvidia":
 
 ```bash
 Driver "modesetting"
-
 ```
 
 Remove the currently installed NVIDIA driver:
@@ -100,14 +115,14 @@ sudo apt-get update
 sudo apt-get upgrade
 ```
 
-### error: externally-managed-environment
+### Fix error: externally-managed-environment
 
 Please refer to these links:
 
-https://askubuntu.com/questions/1465218/pip-error-on-ubuntu-externally-managed-environment-%C3%97-this-environment-is-extern
-https://www.omgubuntu.co.uk/2023/04/pip-install-error-externally-managed-environment-fix
+[Ask Ubuntu: pip error on Ubuntu "externally managed environment"](https://askubuntu.com/questions/1465218/pip-error-on-ubuntu-externally-managed-environment-%C3%97-this-environment-is-extern)
+[OMG! Ubuntu!: How to Fix 'pip install' Error: 'externally managed environment'](https://www.omgubuntu.co.uk/2023/04/pip-install-error-externally-managed-environment-fix)
 
-### Everything you should know about venv:
+### Everything you should know about venv
 
 You can create a virtual environment in Debian by using either `venv` or `virtualenv`, which are Python's built-in library for creating isolated environments. Here is how you can do it with `venv`:
 
@@ -168,13 +183,14 @@ Open the terminal, then we should install two packages:
 
 ```bash
 sudo apt install gnome-software-plugin-flatpak
-
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-```
+``
+
+`
 
 Then we should do is to go into the gnome-software app and click on the _Restart Now_ button. Then, it will refresh. Now, we should have access to additional software.
 
-**Configuration of the partitioning for the LVM**
+### Configuration of the partitioning for the LVM
 
 We should execute the [partition_setup.sh](../partition_setup.sh) file.
 
@@ -190,7 +206,9 @@ Finally, you can execute the script by running:
 ./partition_setup.sh
 ```
 
-### [The First 12 Things You Should Do After Installing Debian 12 “Bookworm”!](https://www.learnlinux.tv/debian-12-12/)
+### The First 12 Things You Should Do After Installing Debian 12 “Bookworm”!
+
+Check out the [article](https://www.learnlinux.tv/debian-12-12/) for detailed information.
 
 ### Install TeXLive! (First approach)
 
@@ -200,7 +218,6 @@ To install TeX Live on Debian, you can use the package manager `apt`. Here's how
    ```bash
    sudo apt update
    ```
-
 
 2. **Install TeX Live**: You can install the full TeX Live distribution or choose to install specific packages. For the full distribution, you can use the `texlive-full` package, but note that it's quite large. Alternatively, you can install individual packages as needed.
 
@@ -398,8 +415,10 @@ wget https://download1.rstudio.org/electron/focal/amd64/rstudio-2023.09.0-463-am
 # Install RStudio using gdebi:
 sudo gdebi rstudio-2023.09.0-463-amd64.deb
 ```
-# Replacing all instances of a string in the project directory excluding the .git
+
+# Replacing all instances of a string in project directory excluding the .git
+
 ```bash
 find /path/to/project -type f -not -path '*/.git/*' -exec sed -i 's/old_string/new_string/g' {} +
-
+```
 ```
