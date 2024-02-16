@@ -398,7 +398,7 @@ wget https://download1.rstudio.org/electron/focal/amd64/rstudio-2023.09.0-463-am
 # Install RStudio using gdebi:
 sudo gdebi rstudio-2023.09.0-463-amd64.deb
 ```
-# Replacing all instances of a string in project directory excluding the .git
+# Replacing all instances of a string in the project directory excluding the .git
 ```bash
 find /path/to/project -type f -not -path '*/.git/*' -exec sed -i 's/old_string/new_string/g' {} +
 
