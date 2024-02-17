@@ -426,4 +426,3 @@ sudo gdebi rstudio-2023.09.0-463-amd64.deb
 ```bash
 find /path/to/project -type f -not -path '*/.git/*' -exec sed -i 's/old_string/new_string/g' {} +
 ```
-```
