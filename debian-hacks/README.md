@@ -1,6 +1,3 @@
-```markdown
-# Debian-Hacks
-
 ## Table of Contents
 1. [Add Ctrl+Alt+T shortcut for the terminal](#add-ctrlaltt-shortcut-for-the-terminal)
 2. [Give sudo privileges to a user](#give-sudo-privileges-to-a-user)
@@ -21,6 +18,12 @@
 17. [Warnings](#warnings)
 18. [Installing RStudio on Debian 12](#installing-rstudio-on-debian-12)
 19. [Replacing all instances of a string in project directory excluding the .git](#replacing-all-instances-of-a-string-in-project-directory-excluding-the-git)
+
+
+```markdown
+# Debian-Hacks
+
+
 
 ### Add Ctrl+Alt+T shortcut for the terminal
 
