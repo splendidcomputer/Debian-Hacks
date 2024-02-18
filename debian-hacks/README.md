@@ -1,25 +1,27 @@
 # Debian-Hacks
 
 ## Table of Contents
-1. [Add Ctrl+Alt+T shortcut for the terminal](#add-ctrlaltt-shortcut-for-the-terminal)
-2. [Give sudo privileges to a user](#give-sudo-privileges-to-a-user)
-3. [Edit the sources list](#edit-the-sources-list)
-4. [Install NVIDIA Drivers](#install-nvidia-drivers)
-5. [Recognize the second connected display](#recognize-the-second-connected-display)
-6. [Uninstall NVIDIA Drivers](#uninstall-nvidia-drivers)
-7. [Fix error: externally-managed-environment](#fix-error-externally-managed-environment)
-8. [Everything you should know about venv](#everything-you-should-know-about-venv)
-9. [Activate your environment](#activate-your-environment)
-10. [Enable Flatpak](#enable-flatpak)
-11. [Configuration of the partitioning for the LVM](#configuration-of-the-partitioning-for-the-lvm)
-12. [The First 12 Things You Should Do After Installing Debian 12 “Bookworm”!](#the-first-12-things-you-should-do-after-installing-debian-12-bookworm)
-13. [Install TeXLive! (First approach)](#install-texlive-first-approach)
-14. [Install TeXLive! (Second approach)](#install-texlive-second-approach)
-15. [Install TeXStudio](#install-texstudio)
-16. [Create a Desktop Shortcut File](#create-a-desktop-shortcut-file)
-17. [Warnings](#warnings)
-18. [Installing RStudio on Debian 12](#installing-rstudio-on-debian-12)
-19. [Replacing all instances of a string in project directory excluding the .git](#replacing-all-instances-of-a-string-in-project-directory-excluding-the-git)
+- [Debian-Hacks](#debian-hacks)
+  - [Table of Contents](#table-of-contents)
+    - [Add Ctrl+Alt+T shortcut for the terminal](#add-ctrlaltt-shortcut-for-the-terminal)
+    - [Give sudo privileges to a user](#give-sudo-privileges-to-a-user)
+    - [Edit the sources list](#edit-the-sources-list)
+    - [Install NVIDIA Drivers](#install-nvidia-drivers)
+    - [Recognize the second connected display](#recognize-the-second-connected-display)
+    - [Uninstall NVIDIA Drivers](#uninstall-nvidia-drivers)
+    - [Fix error: externally-managed-environment](#fix-error-externally-managed-environment)
+    - [Everything you should know about venv](#everything-you-should-know-about-venv)
+    - [Activate your environment](#activate-your-environment)
+    - [Enable Flatpak](#enable-flatpak)
+    - [The First 12 Things You Should Do After Installing Debian 12 “Bookworm”!](#the-first-12-things-you-should-do-after-installing-debian-12-bookworm)
+    - [Install TeXLive! (First approach)](#install-texlive-first-approach)
+    - [Install TeXLive! (Second approach)](#install-texlive-second-approach)
+    - [Install TeXStudio](#install-texstudio)
+    - [LaTeX Compilation Commands to Resolve Hyperlink Issue](#latex-compilation-commands-to-resolve-hyperlink-issue)
+    - [Create a Desktop Shortcut File](#create-a-desktop-shortcut-file)
+    - [Warnings](#warnings)
+- [Installing RStudio on Debian 12](#installing-rstudio-on-debian-12)
+- [Replacing all instances of a string in project directory excluding the .git](#replacing-all-instances-of-a-string-in-project-directory-excluding-the-git)
 
 
 
@@ -334,6 +336,37 @@ To install TeXStudio on Debian, you can use the package manager `apt`. Here's ho
 However, using the version from the official Debian repositories is generally recommended as it will be automatically updated along with the rest of your system's packages.
 
 That's it! TexStudio should now be installed on your Debian system, and you can use it for editing LaTeX documents. If you need any additional packages or assistance, feel free to ask!
+
+### LaTeX Compilation Commands to Resolve Hyperlink Issue
+
+To resolve the issue of question marks appearing as hyperlinks in your LaTeX document, follow these steps:
+
+1. **pdflatex**: Compile your LaTeX document using `pdflatex`:
+    ```bash
+    pdflatex yourfile.tex
+    ```
+    Replace `yourfile.tex` with the name of your LaTeX document file.
+
+2. **bibtex**: Run `bibtex` on the generated `.aux` file to process bibliographic references:
+    ```bash
+    bibtex yourfile.aux
+    ```
+    Replace `yourfile.aux` with the name of your LaTeX document's auxiliary file.
+
+3. **pdflatex (1st time)**: Compile the document again with `pdflatex`:
+    ```bash
+    pdflatex yourfile.tex
+    ```
+
+4. **pdflatex (2nd time)**: Run `pdflatex` once more to resolve references and generate the final PDF:
+    ```bash
+    pdflatex yourfile.tex
+    ```
+
+Repeat steps 3 and 4 as necessary until all cross-references and citations are resolved and the final PDF is generated without question marks appearing as hyperlinks.
+
+After following these steps, your LaTeX document should be compiled successfully without any issues with hyperlinks.
+
 
 ### Create a Desktop Shortcut File
 
