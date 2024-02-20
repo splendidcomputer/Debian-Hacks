@@ -14,7 +14,7 @@
     - [Activate your environment](#activate-your-environment)
     - [Enable Flatpak](#enable-flatpak)
     - [The First 12 Things You Should Do After Installing Debian 12 “Bookworm”!](#the-first-12-things-you-should-do-after-installing-debian-12-bookworm)
-    - [Install TeXLive! (First approach)](#install-texlive-first-approach)
+    - [Install TeXLive! (First approach (recommended))](#install-texlive-first-approach)
     - [Install TeXLive! (Second approach)](#install-texlive-second-approach)
     - [Install TeXStudio](#install-texstudio)
     - [LaTeX Compilation Commands to Resolve Hyperlink Issue](#latex-compilation-commands-to-resolve-hyperlink-issue)
