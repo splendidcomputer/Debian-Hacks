@@ -217,7 +217,7 @@ Finally, you can execute the script by running:
 
 Check out the [article](https://www.learnlinux.tv/debian-12-12/) for detailed information.
 
-### Install TeXLive! (First approach)
+### Install TeXLive! (First approach (recommended))
 
 To install TeX Live on Debian, you can use the package manager `apt`. Here's how you can do it:
 
