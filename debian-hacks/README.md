@@ -14,7 +14,7 @@
     - [Activate your environment](#activate-your-environment)
     - [Enable Flatpak](#enable-flatpak)
     - [The First 12 Things You Should Do After Installing Debian 12 “Bookworm”!](#the-first-12-things-you-should-do-after-installing-debian-12-bookworm)
-    - [Install TeXLive! (First approach (recommended))](#install-texlive-first-approach)
+    - [Installing TeXLive (First Approach - Recommended)](#installing-texlive-first-approach---recommended)
     - [Install TeXLive! (Second approach)](#install-texlive-second-approach)
     - [Install TeXStudio](#install-texstudio)
     - [LaTeX Compilation Commands to Resolve Hyperlink Issue](#latex-compilation-commands-to-resolve-hyperlink-issue)
@@ -217,14 +217,16 @@ Finally, you can execute the script by running:
 
 Check out the [article](https://www.learnlinux.tv/debian-12-12/) for detailed information.
 
-### Install TeXLive! (First approach (recommended))
+### Installing TeXLive (First Approach - Recommended)
 
-To install TeX Live on Debian, you can use the package manager `apt`. Here's how you can do it:
+To install TeX Live on Debian, you can use the package manager `apt`. Here's a step-by-step guide for the first approach:
 
-1. **Update Package Lists**: It's a good practice to update your package lists before installing new packages. Run the following command:
+1. **Update Package Lists**: Before installing new packages, it's essential to update your package lists. Run the following command in your terminal:
+
    ```bash
    sudo apt update
    ```
+
 
 2. **Install TeX Live**: You can install the full TeX Live distribution or choose to install specific packages. For the full distribution, you can use the `texlive-full` package, but note that it's quite large. Alternatively, you can install individual packages as needed.
 
