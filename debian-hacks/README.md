@@ -461,3 +461,28 @@ sudo gdebi rstudio-2023.09.0-463-amd64.deb
 ```bash
 find /path/to/project -type f -not -path '*/.git/*' -exec sed -i 's/old_string/new_string/g' {} +
 ```
+
+# Installing docker-compose
+
+1. **Ensure Docker Engine is installed**: Docker Compose requires Docker Engine to be installed and operational on your system. Let's verify if Docker Engine is installed and running:
+
+    ```bash
+    docker --version
+    ```
+
+    If Docker Engine is not installed, you need to install it first. You can refer to the official Docker documentation for instructions on how to install Docker Engine on Ubuntu.
+
+2. **Try installing Docker Compose via Python pip**:
+
+    ```bash
+    sudo apt install python3-pip
+    sudo pip3 install docker-compose
+    ```
+
+    This will install Docker Compose using Python's package manager, pip.
+
+3. **Verify the installation**:
+
+    ```bash
+    docker-compose --version
+    ```
