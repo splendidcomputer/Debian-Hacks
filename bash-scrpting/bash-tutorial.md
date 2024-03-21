@@ -99,3 +99,55 @@ expr $a - $b
 expr $a / $b
 expr $a \* 3
 ```
+
+11. **Arrays:**
+    Bash also supports arrays, which allow you to store multiple values in a single variable. You can create an array by explicitly declaring it or by assigning values to indexed elements:
+    ```bash
+    # Declare an array
+    myArray=("apple" "banana" "cherry")
+
+    # Access elements of the array
+    echo "${myArray[0]}"  # Outputs: apple
+    echo "${myArray[1]}"  # Outputs: banana
+
+    # Add elements to the array
+    myArray+=("date")  # Appends "date" to the end of the array
+
+    # Iterate over array elements
+    for fruit in "${myArray[@]}"; do
+        echo "Fruit: $fruit"
+    done
+    ```
+
+12. **Conditionals with Test Expressions:**
+    Bash uses the `test` command to evaluate conditional expressions. This command is often used within `if` statements to make decisions based on conditions:
+    ```bash
+    # Basic if-else statement
+    if test "$var" -eq 10; then
+        echo "Variable is 10"
+    else
+        echo "Variable is not 10"
+    fi
+
+    # Using logical operators
+    if [ "$age" -gt 18 ] && [ "$citizenship" == "US" ]; then
+        echo "You are eligible to vote."
+    else
+        echo "You are not eligible to vote."
+    fi
+    ```
+
+    Alternatively, you can use the shorthand `[[ ... ]]` construct for conditional expressions, which is more versatile and supports additional features like pattern matching:
+    ```bash
+    # Using [[ ... ]] construct
+    if [[ "$var" -eq 10 ]]; then
+        echo "Variable is 10"
+    fi
+
+    # Pattern matching
+    if [[ "$string" == *"pattern"* ]]; then
+        echo "String contains pattern"
+    fi
+    ```
+
+By mastering arrays and conditionals, you can enhance the capabilities of your Bash scripts, enabling them to handle more complex data structures and make decisions based on various conditions. Keep exploring and practicing to become proficient in Bash scripting.
