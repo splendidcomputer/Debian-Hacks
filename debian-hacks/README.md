@@ -1,6 +1,7 @@
 # Debian-Hacks
 
 ## Table of Contents
+
 - [Debian-Hacks](#debian-hacks)
   - [Table of Contents](#table-of-contents)
     - [Add Ctrl+Alt+T shortcut for the terminal](#add-ctrlaltt-shortcut-for-the-terminal)
@@ -22,12 +23,8 @@
     - [Warnings](#warnings)
 - [Installing RStudio on Debian 12](#installing-rstudio-on-debian-12)
 - [Replacing all instances of a string in project directory excluding the .git](#replacing-all-instances-of-a-string-in-project-directory-excluding-the-git)
-
-
-
-
-
-
+- [Installing docker-compose](#installing-docker-compose)
+- [Installing nodejs](#installing-nodejs)
 
 ### Add Ctrl+Alt+T shortcut for the terminal
 
@@ -54,7 +51,7 @@ We should comment out the _deb cdrom:[Debian GNU/Linux 12.5.0 \_Bullseye_ - Offi
 
 The sources list should look like this:
 
-```bash                                                                                         
+```bash
 # deb cdrom:[Debian GNU/Linux 12.5.0 _Bookworm_ - Official amd64 DVD Binary-1 2>
 
 deb http://deb.debian.org/debian/ bookworm main contrib non-free non-free-firmware
@@ -188,7 +185,7 @@ If you're using virtualenv or venv, you should activate the environment before r
 
 Open the terminal, then we should install two packages:
 
-```bash
+````bash
 sudo apt install gnome-software-plugin-flatpak
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 ``
@@ -205,7 +202,7 @@ Make it executable with the chmod command:
 
 ```bash
 chmod +x partition_setup.sh
-```
+````
 
 Finally, you can execute the script by running:
 
@@ -227,25 +224,28 @@ To install TeX Live on Debian, you can use the package manager `apt`. Here's a s
    sudo apt update
    ```
 
-
 2. **Install TeX Live**: You can install the full TeX Live distribution or choose to install specific packages. For the full distribution, you can use the `texlive-full` package, but note that it's quite large. Alternatively, you can install individual packages as needed.
 
    To install the full TeX Live distribution:
+
    ```bash
    sudo apt install texlive-full
    ```
 
    To install a smaller set of basic packages:
+
    ```bash
    sudo apt install texlive-base
    ```
 
    You can also install additional packages as needed. For example, if you're working with LaTeX documents, you might want to install `texlive-latex-extra`:
+
    ```bash
    sudo apt install texlive-latex-extra
    ```
 
 3. **Verify Installation**: Once the installation is complete, you can verify that TeX Live is installed correctly by checking the version:
+
    ```bash
    tex --version
    ```
@@ -314,19 +314,23 @@ Now, you should have TeX Live installed on your system and you can use it to cre
 To install TeXStudio on Debian, you can use the package manager `apt`. Here's how to do it:
 
 1. **Update Package Lists**: Before installing any new packages, it's recommended to update your package lists:
+
    ```bash
    sudo apt update
    ```
 
 2. **Install TexStudio**: TexStudio is available in the Debian repositories. You can install it using the following command:
+
    ```bash
    sudo apt install texstudio
    ```
 
 3. **Verify Installation**: Once the installation is complete, you can verify that TexStudio is installed correctly by running it from the terminal:
+
    ```bash
    texstudio
    ```
+
    Alternatively, you can search for TexStudio in your desktop environment's application menu and launch it from there.
 
 4. **Optional**: If you encounter any issues or want to ensure that you have the latest version of TexStudio, you can download and install it from the official website. Here are the general steps:
@@ -344,31 +348,35 @@ That's it! TexStudio should now be installed on your Debian system, and you can 
 To resolve the issue of question marks appearing as hyperlinks in your LaTeX document, follow these steps:
 
 1. **pdflatex**: Compile your LaTeX document using `pdflatex`:
-    ```bash
-    pdflatex yourfile.tex
-    ```
-    Replace `yourfile.tex` with the name of your LaTeX document file.
+
+   ```bash
+   pdflatex yourfile.tex
+   ```
+
+   Replace `yourfile.tex` with the name of your LaTeX document file.
 
 2. **bibtex**: Run `bibtex` on the generated `.aux` file to process bibliographic references:
-    ```bash
-    bibtex yourfile.aux
-    ```
-    Replace `yourfile.aux` with the name of your LaTeX document's auxiliary file.
+
+   ```bash
+   bibtex yourfile.aux
+   ```
+
+   Replace `yourfile.aux` with the name of your LaTeX document's auxiliary file.
 
 3. **pdflatex (1st time)**: Compile the document again with `pdflatex`:
-    ```bash
-    pdflatex yourfile.tex
-    ```
+
+   ```bash
+   pdflatex yourfile.tex
+   ```
 
 4. **pdflatex (2nd time)**: Run `pdflatex` once more to resolve references and generate the final PDF:
-    ```bash
-    pdflatex yourfile.tex
-    ```
+   ```bash
+   pdflatex yourfile.tex
+   ```
 
 Repeat steps 3 and 4 as necessary until all cross-references and citations are resolved and the final PDF is generated without question marks appearing as hyperlinks.
 
 After following these steps, your LaTeX document should be compiled successfully without any issues with hyperlinks.
-
 
 ### Create a Desktop Shortcut File
 
@@ -466,25 +474,34 @@ find /path/to/project -type f -not -path '*/.git/*' -exec sed -i 's/old_string/n
 
 1. **Ensure Docker Engine is installed**: Docker Compose requires Docker Engine to be installed and operational on your system. Let's verify if Docker Engine is installed and running:
 
-    ```bash
-    docker --version
-    ```
+   ```bash
+   docker --version
+   ```
 
-    If Docker Engine is not installed, you need to install it first. You can refer to the official Docker documentation for instructions on how to install Docker Engine on Ubuntu.
+   If Docker Engine is not installed, you need to install it first. You can refer to the official Docker documentation for instructions on how to install Docker Engine on Ubuntu.
 
 2. **Try installing Docker Compose via Python pip**:
 
-    ```bash
-    sudo apt install python3-pip
-    sudo pip3 install docker-compose
-    ```
+   ```bash
+   sudo apt install python3-pip
+   sudo pip3 install docker-compose
+   ```
 
-    This will install Docker Compose using Python's package manager, pip.
+   This will install Docker Compose using Python's package manager, pip.
 
 3. **Verify the installation**:
 
-    ```bash
-    docker-compose --version
-    ```
+   ```bash
+   docker-compose --version
+   ```
+
+# Installing nodejs
+
+```bash
+sudo apt remove --purge nodejs
+sudo apt autoremove
+curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+sudo apt install nodejs
+```
+
 Utilize Debian's Package Management System Efficiently: Debian's package management system, which includes APT (Advanced Package Tool), allows for easy installation, removal, and updating of software packages. Familiarize yourself with APT commands such as apt-get or apt, as well as tools like dpkg, to streamline package management tasks. Additionally, explore the /etc/apt/sources.list file to configure software repositories for access to a wide range of packages. Understanding and effectively using Debian's package management system can greatly enhance your overall Debian experience.
-    
