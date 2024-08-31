@@ -14,6 +14,7 @@
     - [Everything you should know about venv](#everything-you-should-know-about-venv)
     - [Activate your environment](#activate-your-environment)
     - [Enable Flatpak](#enable-flatpak)
+    - [Configuration of the partitioning for the LVM](#configuration-of-the-partitioning-for-the-lvm)
     - [The First 12 Things You Should Do After Installing Debian 12 “Bookworm”!](#the-first-12-things-you-should-do-after-installing-debian-12-bookworm)
     - [Installing TeXLive (First Approach - Recommended)](#installing-texlive-first-approach---recommended)
     - [Install TeXLive! (Second approach)](#install-texlive-second-approach)
@@ -45,14 +46,16 @@ sudo usermod -aG sudo username
 
 ### Edit the sources list
 
-We should comment out the _deb cdrom:[Debian GNU/Linux 12.5.0 \_Bullseye_ - Official amd64 DVD Binary-1 2>\_ from the sources list:
+We should comment out the _deb cdrom:[Debian GNU/Linux 12.7.0 \_Bullseye_ - Official amd64 DVD Binary-1 2>\_ from the sources list:
 
-`sudo nano /etc/apt/sources.list`
+```bash
+sudo nano /etc/apt/sources.list
+```
 
 The sources list should look like this:
 
 ```bash
-# deb cdrom:[Debian GNU/Linux 12.5.0 _Bookworm_ - Official amd64 DVD Binary-1 2>
+# deb cdrom:[Debian GNU/Linux 12.7.0 _Bookworm_ - Official amd64 DVD Binary-1 2>
 
 deb http://deb.debian.org/debian/ bookworm main contrib non-free non-free-firmware
 deb-src http://deb.debian.org/debian/ bookworm main contrib non-free non-free-firmware
@@ -64,7 +67,6 @@ deb-src http://security.debian.org/debian-security bookworm-security main contri
 # see https://www.debian.org/doc/manuals/debian-reference/ch02.en.html#_updates>
 deb http://deb.debian.org/debian/ bookworm-updates main contrib non-free non-free-firmware
 deb-src http://deb.debian.org/debian/ bookworm-updates main contrib non-free non-free-firmware
-
 ```
 
 ### Install NVIDIA Drivers
@@ -77,431 +79,366 @@ sudo apt install nvidia-driver
 
 ### Recognize the second connected display
 
+To recognize the second display connected to your system, run:
+
 ```bash
 xrandr
 ```
 
 ### Uninstall NVIDIA Drivers
 
-Open a terminal and enter the following command to edit the xorg.conf file using a text editor:
+To uninstall NVIDIA drivers, follow these steps:
 
-```bash
-sudo nano /etc/X11/xorg.conf
-```
+1. Open a terminal and edit the xorg.conf file using a text editor:
 
-Locate the "Device" section in the xorg.conf file that corresponds to your NVIDIA graphics card. It should look similar to the lines you mentioned:
+   ```bash
+   sudo nano /etc/X11/xorg.conf
+   ```
 
-```bash
-Section "Device"
-    Identifier "Device0"
-    Driver "nvidia"
-    Vendorname "NVIDIA corporation"
-    BusID "PCI:1:0:0"
-EndSection
-```
+2. Locate the "Device" section in the xorg.conf file that corresponds to your NVIDIA graphics card. It should look similar to this:
 
-Modify the "Driver" line to use the "modesetting" driver instead of "nvidia":
+   ```bash
+   Section "Device"
+       Identifier "Device0"
+       Driver "nvidia"
+       Vendorname "NVIDIA corporation"
+       BusID "PCI:1:0:0"
+   EndSection
+   ```
 
-```bash
-Driver "modesetting"
-```
+3. Modify the "Driver" line to use the "modesetting" driver instead of "nvidia":
 
-Remove the currently installed NVIDIA driver:
+   ```bash
+   Driver "modesetting"
+   ```
 
-```bash
-sudo apt-get purge nvidia*
-```
+4. Remove the currently installed NVIDIA driver:
 
-Next, make sure that your system is up-to-date:
+   ```bash
+   sudo apt-get purge nvidia*
+   ```
 
-```bash
-sudo apt-get update
-sudo apt-get upgrade
-```
+5. Make sure your system is up-to-date:
+
+   ```bash
+   sudo apt-get update
+   sudo apt-get upgrade
+   ```
 
 ### Fix error: externally-managed-environment
 
-Please refer to these links:
+If you encounter an "externally-managed environment" error while using pip, refer to these helpful links:
 
-[Ask Ubuntu: pip error on Ubuntu "externally managed environment"](https://askubuntu.com/questions/1465218/pip-error-on-ubuntu-externally-managed-environment-%C3%97-this-environment-is-extern)
-[OMG! Ubuntu!: How to Fix 'pip install' Error: 'externally managed environment'](https://www.omgubuntu.co.uk/2023/04/pip-install-error-externally-managed-environment-fix)
+- [Ask Ubuntu: pip error on Ubuntu "externally managed environment"](https://askubuntu.com/questions/1465218/pip-error-on-ubuntu-externally-managed-environment-%C3%97-this-environment-is-extern)
+- [OMG! Ubuntu!: How to Fix 'pip install' Error: 'externally managed environment'](https://www.omgubuntu.co.uk/2023/04/pip-install-error-externally-managed-environment-fix)
 
 ### Everything you should know about venv
 
-You can create a virtual environment in Debian by using either `venv` or `virtualenv`, which are Python's built-in library for creating isolated environments. Here is how you can do it with `venv`:
+To create a virtual environment in Debian using `venv`:
 
-1. First, you need to ensure that you have the `venv` module installed. In Python 3.3 and later, it is included by default. If you need to install it separately, you can do so by running:
+1. Ensure the `venv` module is installed:
 
    ```bash
    sudo apt-get install python3-venv
    ```
 
-2. Now, navigate to the directory where you want to create your virtual environment. For example, if you want to create a directory in your home directory called `my_env`, you would first navigate to your home directory:
+2. Navigate to the directory where you want to create your virtual environment:
 
    ```bash
    cd ~
    ```
 
-3. Then, you can create your virtual environment by running:
+3. Create the virtual environment:
 
    ```bash
    python3 -m venv my_env
    ```
 
-   This command will create a new directory named `my_env` which contains the directories and files that make up the virtual environment.
-
-4. Before you can start installing packages into or running Python from your virtual environment, you'll need to activate it. You can do this by running:
+4. Activate the environment:
 
    ```bash
    source my_env/bin/activate
    ```
 
-   You'll know that your virtual environment is activated because its name will now appear on the left side of your terminal prompt.
-
-5. Now, you're free to install packages into your virtual environment without affecting your global Python installation. For example, you could install `jsonargparse` by running:
+5. Install packages in the virtual environment:
 
    ```bash
    pip install jsonargparse
    ```
 
-6. Once you're finished working in your virtual environment, you can deactivate it and return to your global Python environment by running:
+6. Deactivate the environment when finished:
 
    ```bash
    deactivate
    ```
 
-Remember, every time you want to work in your virtual environment, you need to activate it first using the `source my_env/bin/activate` command (replacing `my_env` with the name of your environment if it's different).
-
 ### Activate your environment
 
-If you're using virtualenv or venv, you should activate the environment before running your Python script. This can be done using the source command, like so:
+To activate a virtual environment, use the `source` command:
 
 ```bash
-(ll) mostafa@chat-ai:~/programming/lit-llama$ source env/bin/activate
-(env) mostafa@chat-ai:~/programming/lit-llama$ python3 scripts/download.py --repo_id openlm-research/open_llama_7b --local_dir checkpoints/open-llama/7B
+source env/bin/activate
 ```
 
 ### Enable Flatpak
 
-Open the terminal, then we should install two packages:
+To enable Flatpak support on Debian, install the required packages:
 
-````bash
+```bash
 sudo apt install gnome-software-plugin-flatpak
 sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-``
+```
 
-`
-
-Then we should do is to go into the gnome-software app and click on the _Restart Now_ button. Then, it will refresh. Now, we should have access to additional software.
+Then, open the gnome-software app and click on the _Restart Now_ button to refresh and access additional software.
 
 ### Configuration of the partitioning for the LVM
 
-We should execute the [partition_setup.sh](../partition_setup.sh) file.
+To configure partitioning for the LVM, execute the `partition_setup.sh` script:
 
-Make it executable with the chmod command:
+1. Make the script executable:
 
-```bash
-chmod +x partition_setup.sh
-````
+   ```bash
+   chmod +x partition_setup.sh
+   ```
 
-Finally, you can execute the script by running:
+2. Run the script:
 
-```bash
-./partition_setup.sh
-```
+   ```bash
+   ./partition_setup.sh
+   ```
 
 ### The First 12 Things You Should Do After Installing Debian 12 “Bookworm”!
 
-Check out the [article](https://www.learnlinux.tv/debian-12-12/) for detailed information.
+For a comprehensive guide on the first 12 things you should do after installing Debian 12 "Bookworm", refer to [this article](https://www.learnlinux.tv/debian-12-12/).
 
 ### Installing TeXLive (First Approach - Recommended)
 
-To install TeX Live on Debian, you can use the package manager `apt`. Here's a step-by-step guide for the first approach:
+To install TeX Live on Debian:
 
-1. **Update Package Lists**: Before installing new packages, it's essential to update your package lists. Run the following command in your terminal:
+1. Update the package lists:
 
    ```bash
    sudo apt update
    ```
 
-2. **Install TeX Live**: You can install the full TeX Live distribution or choose to install specific packages. For the full distribution, you can use the `texlive-full` package, but note that it's quite large. Alternatively, you can install individual packages as needed.
-
-   To install the full TeX Live distribution:
+2. Install TeX Live:
 
    ```bash
    sudo apt install texlive-full
    ```
 
-   To install a smaller set of basic packages:
-
-   ```bash
-   sudo apt install texlive-base
-   ```
-
-   You can also install additional packages as needed. For example, if you're working with LaTeX documents, you might want to install `texlive-latex-extra`:
-
-   ```bash
-   sudo apt install texlive-latex-extra
-   ```
-
-3. **Verify Installation**: Once the installation is complete, you can verify that TeX Live is installed correctly by checking the version:
+3. Verify the installation:
 
    ```bash
    tex --version
    ```
 
-   This command should output the version information for TeX Live.
-
-That's it! TeX Live should now be installed on your Debian system. You can start using it to create and edit LaTeX documents. If you need additional packages or functionality, you can install them using `apt` as needed.
-
 ### Install TeXLive! (Second approach)
 
-First, locate the downloaded ISO file. The file should be named something like texlive.iso.
+To install TeX Live from an ISO file:
 
-Mount the ISO file. To do this, you first need to create a directory that will serve as the mount point. Open your terminal and type:
+1. Mount the ISO file:
 
-```bash
-sudo mkdir /mnt/texlive
-```
+   ```bash
+   sudo mkdir /mnt/texlive
+   sudo mount -o loop /path/to/texlive.iso /mnt/texlive
+   ```
 
-Then, mount the ISO file to this directory:
+2. Run the installer:
 
-```bash
-sudo mount -o loop /path/to/texlive.iso /mnt/texlive
-```
+   ```bash
+   cd /mnt/texlive
+   sudo ./install-tl
+   ```
 
-Replace /path/to/texlive.iso with the path to the ISO file on your system.
+3. Update the PATH:
 
-Install TeX Live. Change to the directory where the ISO file is mounted and run the installer:
+   ```bash
+   nano ~/.bashrc
+   export PATH="/usr/local/texlive/2023/bin/x86_64-linux:$PATH"
+   source ~/.bashrc
+   ```
 
-```
-cd /mnt/texlive
-sudo ./install-tl
-```
+4. Unmount the ISO:
 
-This will start the TeX Live installer. It's interactive and you should be able to just press I and then Enter to start the installation with the default settings. If you need to customize the installation, you can do so within this installer.
-
-Set up the PATH. After the installation, you need to add TeX Live binaries to your system PATH. Typically, they are installed under /usr/local/texlive/2023/bin/x86_64-linux (replace 2023 with the year of your TeX Live edition and x86_64-linux with your architecture, if different).
-
-You can add this to your PATH by editing your .bashrc or .bash_profile file (use nano, vim, or any text editor you prefer):
-
-```
-nano ~/.bashrc
-```
-
-Then, add the following line at the end of the file:
-
-```
-export PATH="/usr/local/texlive/2023/bin/x86_64-linux:$PATH"
-```
-
-Save and exit. To apply the changes, close and reopen your terminal, or source the updated file:
-
-```bash
-source ~/.bashrc
-```
-
-Unmount the ISO. After you have finished the installation, you can unmount the ISO file:
-
-```bash
-sudo umount /mnt/texlive
-```
-
-Now, you should have TeX Live installed on your system and you can use it to create and compile your TeX documents.
+   ```bash
+   sudo umount /mnt/texlive
+   ```
 
 ### Install TeXStudio
 
-To install TeXStudio on Debian, you can use the package manager `apt`. Here's how to do it:
+To install TeXStudio:
 
-1. **Update Package Lists**: Before installing any new packages, it's recommended to update your package lists:
+1. Update package lists:
 
    ```bash
    sudo apt update
    ```
 
-2. **Install TexStudio**: TexStudio is available in the Debian repositories. You can install it using the following command:
+2. Install TeXStudio:
 
    ```bash
    sudo apt install texstudio
    ```
 
-3. **Verify Installation**: Once the installation is complete, you can verify that TexStudio is installed correctly by running it from the terminal:
+3. Launch TeXStudio:
 
    ```bash
    texstudio
    ```
 
-   Alternatively, you can search for TexStudio in your desktop environment's application menu and launch it from there.
-
-4. **Optional**: If you encounter any issues or want to ensure that you have the latest version of TexStudio, you can download and install it from the official website. Here are the general steps:
-
-   - Go to the TexStudio website: [https://www.texstudio.org/](https://www.texstudio.org/)
-   - Download the appropriate package for Debian.
-   - Install the downloaded package using your package manager or by running it from the terminal.
-
-However, using the version from the official Debian repositories is generally recommended as it will be automatically updated along with the rest of your system's packages.
-
-That's it! TexStudio should now be installed on your Debian system, and you can use it for editing LaTeX documents. If you need any additional packages or assistance, feel free to ask!
-
 ### LaTeX Compilation Commands to Resolve Hyperlink Issue
 
-To resolve the issue of question marks appearing as hyperlinks in your LaTeX document, follow these steps:
+To resolve hyperlink issues in LaTeX documents:
 
-1. **pdflatex**: Compile your LaTeX document using `pdflatex`:
-
-   ```bash
-   pdflatex yourfile.tex
-   ```
-
-   Replace `yourfile.tex` with the name of your LaTeX document file.
-
-2. **bibtex**: Run `bibtex` on the generated `.aux` file to process bibliographic references:
-
-   ```bash
-   bibtex yourfile.aux
-   ```
-
-   Replace `yourfile.aux` with the name of your LaTeX document's auxiliary file.
-
-3. **pdflatex (1st time)**: Compile the document again with `pdflatex`:
+1. Compile with `pdflatex`:
 
    ```bash
    pdflatex yourfile.tex
    ```
 
-4. **pdflatex (2nd time)**: Run `pdflatex` once more to resolve references and generate the final PDF:
+
+
+2. Compile with `bibtex`:
+
    ```bash
-   pdflatex yourfile.tex
+   bibtex yourfile
    ```
 
-Repeat steps 3 and 4 as necessary until all cross-references and citations are resolved and the final PDF is generated without question marks appearing as hyperlinks.
+3. Compile twice with `pdflatex`:
 
-After following these steps, your LaTeX document should be compiled successfully without any issues with hyperlinks.
+   ```bash
+   pdflatex yourfile.tex
+   pdflatex yourfile.tex
+   ```
 
 ### Create a Desktop Shortcut File
 
-Creating a desktop shortcut for a program in Debian involves a few steps. You can use the `.desktop` file format to create shortcuts. Here's a step-by-step guide:
+To create a desktop shortcut file:
 
-1. **Create a Desktop Entry File (.desktop)**:
-   Open a text editor (such as `nano` or `gedit`) with administrative privileges and create a `.desktop` file for the program you want to create a shortcut for. Replace `YourProgram` with the actual program name:
+1. Create the `.desktop` file:
 
    ```bash
-   sudo nano /usr/share/applications/YourProgram.desktop
+   nano ~/.local/share/applications/myapp.desktop
    ```
 
-2. **Edit the Desktop Entry File**:
-   In the text editor, add the following content to the `.desktop` file, customizing the fields as needed:
+2. Add the following contents:
 
    ```plaintext
    [Desktop Entry]
-   Name=Your Program Name
-   Exec=/path/to/your/program
-   Icon=/path/to/your/program/icon.png
+   Name=My App
+   Comment=My application description
+   Exec=/usr/bin/myapp
+   Icon=/usr/share/pixmaps/myapp.png
+   Terminal=false
    Type=Application
-   Categories=Utility;Application;OtherCategory
    ```
 
-   - `Name`: The display name for your program.
-   - `Exec`: The command to execute the program. Replace `/path/to/your/program` with the actual path to your program's executable.
-   - `Icon`: Path to an icon for your program.
-   - `Type`: Should be set to `Application`.
-   - `Categories`: Categories the program belongs to. You can use existing categories or create custom ones.
-
-3. **Save and Exit**:
-
-   **Nano**:
-   Save the file (`Ctrl + O` in `nano`) and exit the text editor (`Ctrl + X` in `nano`).
-
-   **vim**: After editing, press `Esc`, then type `:wq` and press `Enter` to save and exit. Use `:q!` to exit without saving changes.
-
-4. **Make the File Executable**:
-   Make sure the `.desktop` file is executable:
+3. Save the file and make it executable:
 
    ```bash
-   sudo chmod +x /usr/share/applications/YourProgram.desktop
+   chmod +x ~/.local/share/applications/myapp.desktop
    ```
-
-5. **Refresh Desktop Entries**:
-   Refresh the desktop entry cache so that the new shortcut becomes visible:
-
-   ```bash
-   sudo update-desktop-database
-   ```
-
-6. **The Shortcut is Ready**:
-   You should now be able to find the program's shortcut in your application menu or by searching for its name.
-
-Note that some desktop environments like GNOME might also allow you to directly create shortcuts by right-clicking on the desktop or the application menu. This can be a more user-friendly way to create shortcuts.
-
-Remember to replace placeholders like `YourProgram` and file paths with actual values relevant to your setup.
 
 ### Warnings
 
-**AnyDesk Warning**:
+#### Beware of System Commands
 
-`W: http://deb.anydesk.com/dists/all/InRelease: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.`
+Be cautious when executing system commands that can alter your system’s configuration. For example, the `dd` command can overwrite partitions if used improperly. Always double-check commands and understand their function before execution.
 
-**Solution:**
+### Installing RStudio on Debian 12
 
-```bash
-cd /etc/apt
-sudo cp trusted.gpg trusted.gpg.d
-```
+To install RStudio on Debian 12, follow these steps:
 
-# Installing RStudio on Debian 12
-
-To install RStudio on Debian 12, you can follow these steps:
-
-```bash
-# Download and install the required version of OpenSSL (libssl1.1):
-sudo wget http://security.debian.org/debian-security/pool/updates/main/o/openssl/libssl1.1_1.1.1n-0+deb10u6_amd64.deb
-sudo dpkg -i libssl1.1_1.1.1n-0+deb10u6_amd64.deb
-
-# Download the RStudio package:
-wget https://download1.rstudio.org/electron/focal/amd64/rstudio-2023.09.0-463-amd64.deb
-
-# Install RStudio using gdebi:
-sudo gdebi rstudio-2023.09.0-463-amd64.deb
-```
-
-# Replacing all instances of a string in project directory excluding the .git
-
-```bash
-find /path/to/project -type f -not -path '*/.git/*' -exec sed -i 's/old_string/new_string/g' {} +
-```
-
-# Installing docker-compose
-
-1. **Ensure Docker Engine is installed**: Docker Compose requires Docker Engine to be installed and operational on your system. Let's verify if Docker Engine is installed and running:
+1. Update the package lists:
 
    ```bash
-   docker --version
+   sudo apt update
    ```
 
-   If Docker Engine is not installed, you need to install it first. You can refer to the official Docker documentation for instructions on how to install Docker Engine on Ubuntu.
-
-2. **Try installing Docker Compose via Python pip**:
+2. Install dependencies:
 
    ```bash
-   sudo apt install python3-pip
-   sudo pip3 install docker-compose
+   sudo apt install r-base gdebi-core
    ```
 
-   This will install Docker Compose using Python's package manager, pip.
+3. Download the RStudio package:
 
-3. **Verify the installation**:
+   ```bash
+   wget https://download1.rstudio.org/desktop/debian10/x86_64/rstudio-2023.06.1-524-amd64.deb
+   ```
+
+4. Install the package:
+
+   ```bash
+   sudo gdebi rstudio-2023.06.1-524-amd64.deb
+   ```
+
+5. Launch RStudio:
+
+   ```bash
+   rstudio
+   ```
+
+### Replacing all instances of a string in project directory excluding the .git
+
+To replace all instances of a string in a project directory while excluding the `.git` directory:
+
+```bash
+grep -rli 'old_string' * | grep -v '.git' | xargs -i@ sed -i 's/old_string/new_string/g' @
+```
+
+### Installing docker-compose
+
+To install Docker Compose:
+
+1. Install Docker:
+
+   ```bash
+   sudo apt update
+   sudo apt install docker.io
+   ```
+
+2. Download the Docker Compose binary:
+
+   ```bash
+   sudo curl -L "https://github.com/docker/compose/releases/download/2.10.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+   ```
+
+3. Apply executable permissions:
+
+   ```bash
+   sudo chmod +x /usr/local/bin/docker-compose
+   ```
+
+4. Verify the installation:
 
    ```bash
    docker-compose --version
    ```
 
-# Installing nodejs
+### Installing nodejs
 
-```bash
-sudo apt remove --purge nodejs
-sudo apt autoremove
-curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -
-sudo apt install nodejs
-```
+To install Node.js on Debian:
 
-Utilize Debian's Package Management System Efficiently: Debian's package management system, which includes APT (Advanced Package Tool), allows for easy installation, removal, and updating of software packages. Familiarize yourself with APT commands such as apt-get or apt, as well as tools like dpkg, to streamline package management tasks. Additionally, explore the /etc/apt/sources.list file to configure software repositories for access to a wide range of packages. Understanding and effectively using Debian's package management system can greatly enhance your overall Debian experience.
+1. Update the package lists:
+
+   ```bash
+   sudo apt update
+   ```
+
+2. Install Node.js:
+
+   ```bash
+   sudo apt install nodejs
+   sudo apt install npm
+   ```
+
+3. Verify the installation:
+
+   ```bash
+   node --version
+   npm --version
+   ```
+
+This concludes the Debian-Hacks guide. Follow these steps and commands carefully to get the best experience using Debian.
