@@ -42,6 +42,13 @@ Use the usermod command to add the user to the sudo group. Replace username with
 ```bash
 su -
 sudo usermod -aG sudo username
+groups splenda
+```
+#### Verify Group Membership:
+To verify that splenda is now in the sudo group, run:
+
+```bash
+groups splenda
 ```
 
 ### Edit the sources list
