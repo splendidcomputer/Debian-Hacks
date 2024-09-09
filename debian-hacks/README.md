@@ -47,7 +47,7 @@ sudo usermod -aG sudo username
 To verify that splenda is now in the sudo group, run:
 
 ```bash
-groups splenda
+groups username
 ```
 
 ### Edit the sources list
