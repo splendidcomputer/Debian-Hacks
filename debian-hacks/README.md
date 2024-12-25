@@ -6,6 +6,7 @@
   - [Table of Contents](#table-of-contents)
     - [Add Ctrl+Alt+T shortcut for the terminal](#add-ctrlaltt-shortcut-for-the-terminal)
     - [Give sudo privileges to a user](#give-sudo-privileges-to-a-user)
+      - [Verify Group Membership:](#verify-group-membership)
     - [Edit the sources list](#edit-the-sources-list)
     - [Install NVIDIA Drivers](#install-nvidia-drivers)
     - [Recognize the second connected display](#recognize-the-second-connected-display)
@@ -21,11 +22,16 @@
     - [Install TeXStudio](#install-texstudio)
     - [LaTeX Compilation Commands to Resolve Hyperlink Issue](#latex-compilation-commands-to-resolve-hyperlink-issue)
     - [Create a Desktop Shortcut File](#create-a-desktop-shortcut-file)
+    - [Killing a Process by Port Number](#killing-a-process-by-port-number)
+      - [Kill a Single Process by Port Number](#kill-a-single-process-by-port-number)
+      - [Kill Processes on Multiple Ports](#kill-processes-on-multiple-ports)
+      - [Important Notes](#important-notes)
     - [Warnings](#warnings)
-- [Installing RStudio on Debian 12](#installing-rstudio-on-debian-12)
-- [Replacing all instances of a string in project directory excluding the .git](#replacing-all-instances-of-a-string-in-project-directory-excluding-the-git)
-- [Installing docker-compose](#installing-docker-compose)
-- [Installing nodejs](#installing-nodejs)
+      - [Beware of System Commands](#beware-of-system-commands)
+    - [Installing RStudio on Debian 12](#installing-rstudio-on-debian-12)
+    - [Replacing all instances of a string in project directory excluding the .git](#replacing-all-instances-of-a-string-in-project-directory-excluding-the-git)
+    - [Installing docker-compose](#installing-docker-compose)
+    - [Installing nodejs](#installing-nodejs)
 
 ### Add Ctrl+Alt+T shortcut for the terminal
 
@@ -43,7 +49,9 @@ Use the usermod command to add the user to the sudo group. Replace username with
 su -
 sudo usermod -aG sudo username
 ```
+
 #### Verify Group Membership:
+
 To verify that splenda is now in the sudo group, run:
 
 ```bash
@@ -303,8 +311,6 @@ To resolve hyperlink issues in LaTeX documents:
    pdflatex yourfile.tex
    ```
 
-
-
 2. Compile with `bibtex`:
 
    ```bash
@@ -345,6 +351,39 @@ To create a desktop shortcut file:
    ```bash
    chmod +x ~/.local/share/applications/myapp.desktop
    ```
+
+### Killing a Process by Port Number
+
+If you need to terminate a process running on a specific port, you can use the following commands:
+
+#### Kill a Single Process by Port Number
+
+To kill a process listening on a specific port (e.g., `3000`), run:
+
+```bash
+sudo kill -9 $(sudo lsof -t -i:3000)
+```
+
+- `lsof -t -i:3000`: Retrieves the process ID (PID) of the process using port `3000`.
+- `kill -9`: Sends the `SIGKILL` signal to forcibly terminate the process.
+- `sudo`: Ensures the command has sufficient permissions.
+
+#### Kill Processes on Multiple Ports
+
+To terminate processes on multiple ports (e.g., `8090` and `8108`), use the following loop:
+
+```bash
+for port in 8090 8108; do sudo lsof -ti :$port | xargs -r sudo kill -9; done
+```
+
+- `for port in 8090 8108`: Iterates over the specified ports.
+- `lsof -ti :$port`: Finds the PIDs of processes listening on the current port.
+- `xargs -r sudo kill -9`: Sends the `SIGKILL` signal to terminate each PID. The `-r` flag ensures `xargs` runs only if there is valid input.
+
+#### Important Notes
+
+- **Use with caution:** The `kill -9` command forcefully terminates processes without allowing cleanup. If possible, try using `kill` or `kill -15` first for a graceful shutdown.
+- **Permissions:** Ensure you have the necessary permissions (use `sudo` when required).
 
 ### Warnings
 
