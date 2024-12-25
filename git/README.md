@@ -16,6 +16,7 @@ Git is a distributed version control system designed to handle everything from s
       - [2. Adding Staged Changes to the Last Commit](#2-adding-staged-changes-to-the-last-commit)
       - [3. Removing Staged Changes from the Last Commit](#3-removing-staged-changes-from-the-last-commit)
   - [Undoing the Last Commit (While Keeping Changes Staged)](#undoing-the-last-commit-while-keeping-changes-staged)
+    - [Redoing the Last Commit](#redoing-the-last-commit)
   - [Caution](#caution)
   - [Conclusion](#conclusion)
 
@@ -93,6 +94,19 @@ git reset --soft HEAD~1
 ```
 
 This resets the commit while leaving your changes staged for further modifications or review.
+
+### Redoing the Last Commit
+
+If you've used git reset --soft HEAD~1 and the changes are still staged, you can simply reapply the commit with:
+
+```bash
+git commit -c HEAD@{1}
+
+```
+
+- `-c HEAD@{1}` lets you reuse the same commit message from the last commit you just reset.
+
+* You can modify the message during the commit process if desired.
 
 ---
 
