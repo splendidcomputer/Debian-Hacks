@@ -462,6 +462,31 @@ To install Docker Compose:
    docker-compose --version
    ```
 
+   In case problems arise:
+   🔄 2. Restart Docker Desktop completely
+
+```bash
+
+systemctl --user restart docker-desktop
+
+```
+
+Or fully shut it down and launch again:
+
+```bash
+
+pkill -f docker-desktop
+docker-desktop
+```
+
+Clear Docker Desktop's state (if it keeps failing)
+Sometimes Docker Desktop gets stuck due to corrupted state.
+
+```bash
+
+rm -rf ~/.docker/desktop
+```
+
 ### Installing nodejs
 
 To install Node.js on Debian:
