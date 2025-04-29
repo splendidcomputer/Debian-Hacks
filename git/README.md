@@ -126,3 +126,17 @@ The `git commit --amend` command is a powerful tool for modifying the last commi
 - Keep your commit history clean and organized.
 
 Use this command judiciously and follow best practices, especially when collaborating with others on shared repositories.
+
+
+## Sharing stashed files
+1. To save your stashed files into a files use this command:
+
+```bash
+   git stash show -p > temp_stash.patch
+```
+
+2. To apply the stashed data stored in this patch use this command:
+
+```bash
+git apply temp_stash.patch
+```  
