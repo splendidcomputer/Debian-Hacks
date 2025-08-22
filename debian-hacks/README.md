@@ -32,6 +32,7 @@
     - [Replacing all instances of a string in project directory excluding the .git](#replacing-all-instances-of-a-string-in-project-directory-excluding-the-git)
     - [Installing docker-compose](#installing-docker-compose)
     - [Installing nodejs](#installing-nodejs)
+    - [Generate SSH Key](#generate-ssh-key)
 
 ### Add Ctrl+Alt+T shortcut for the terminal
 
@@ -512,3 +513,16 @@ To install Node.js on Debian:
    ```
 
 This concludes the Debian-Hacks guide. Follow these steps and commands carefully to get the best experience using Debian.
+
+
+### Generate SSH Key
+
+
+**ed25519:**
+```bash
+ssh-keygen -t ed25519 -f KEYNAME
+```
+**rsa:**
+```bash
+ssh-keygen -t rsa -b 4096 -f KEYNAME
+```
