@@ -33,6 +33,7 @@
     - [Installing docker-compose](#installing-docker-compose)
     - [Installing nodejs](#installing-nodejs)
     - [Generate SSH Key](#generate-ssh-key)
+    - [Secure copy through SSH](#secure-copy-through-ssh)
 
 ### Add Ctrl+Alt+T shortcut for the terminal
 
@@ -525,4 +526,10 @@ ssh-keygen -t ed25519 -f KEYNAME
 **rsa:**
 ```bash
 ssh-keygen -t rsa -b 4096 -f KEYNAME
+```
+
+### Secure copy through SSH
+
+```bash
+scp filename.ext user@remote_host:/path/on/remote/
 ```
