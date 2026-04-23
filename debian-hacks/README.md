@@ -65,7 +65,7 @@ groups username
 We should comment out the _deb cdrom:[Debian GNU/Linux 12.7.0 \_Bullseye_ - Official amd64 DVD Binary-1 2>\_ from the sources list:
 
 ```bash
-sudo nano /etc/apt/sources.list
+sudo vim /etc/apt/sources.list
 ```
 
 The sources list should look like this:
@@ -108,7 +108,7 @@ To uninstall NVIDIA drivers, follow these steps:
 1. Open a terminal and edit the xorg.conf file using a text editor:
 
    ```bash
-   sudo nano /etc/X11/xorg.conf
+   sudo vim /etc/X11/xorg.conf
    ```
 
 2. Locate the "Device" section in the xorg.conf file that corresponds to your NVIDIA graphics card. It should look similar to this:
@@ -270,7 +270,7 @@ To install TeX Live from an ISO file:
 3. Update the PATH:
 
    ```bash
-   nano ~/.bashrc
+   vim ~/.bashrc
    export PATH="/usr/local/texlive/2023/bin/x86_64-linux:$PATH"
    source ~/.bashrc
    ```
@@ -333,7 +333,7 @@ To create a desktop shortcut file:
 1. Create the `.desktop` file:
 
    ```bash
-   nano ~/.local/share/applications/myapp.desktop
+   vim ~/.local/share/applications/myapp.desktop
    ```
 
 2. Add the following contents:

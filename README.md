@@ -7,3 +7,4 @@ Here I gather some useful tips and tricks about Linux.
 - [Git](/git/README.md) 
 - [Bash Scripting](/bash-scrpting/bash-tutorial.md)
 - [Command Line Tricks](/commandline-tricks/commandline-tricks.md)
+- [Slurm](/slurm/slurm-job.md)

@@ -8,7 +8,7 @@ Here's a basic introduction to get you started with Bash scripting:
    Bash scripting involves writing a series of commands in a plain text file (usually with a `.sh` extension) that can be executed as a single program. These scripts can automate repetitive tasks, perform system administration, manipulate files, and even create complex workflows.
 
 2. **Creating a Bash Script:**
-   To create a bash script, you'll need a text editor (like nano, vim, or even a graphical editor like VSCode). Start your script with a "shebang" or "hashbang" line, which tells the system which interpreter to use. The shebang line for Bash is usually:
+   To create a bash script, you'll need a text editor (like vim, vim, or even a graphical editor like VSCode). Start your script with a "shebang" or "hashbang" line, which tells the system which interpreter to use. The shebang line for Bash is usually:
    ```bash
    #!/bin/bash
    ```

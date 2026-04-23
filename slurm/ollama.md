@@ -104,7 +104,7 @@ Ollama runs inside a container to isolate dependencies.
 singularity pull ollama.sif docker://ollama/ollama
 ```
 
-> ⚠️ Note: Ollama does not provide an official Docker image yet. If this fails, you may need to build your own container.
+> Note: Ollama does not provide an official Docker image yet. If this fails, you may need to build your own container.
 
 ### Option 2: Build a Singularity image from a local Dockerfile
 
