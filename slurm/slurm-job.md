@@ -244,25 +244,3 @@ squeue -u $USER
 # 4. View output
 tail -f logs/jobname_<jobid>.out
 ```
-
----
-
-## Notes About Your Cluster
-
-From your `sinfo`:
-
-* `playground` → short test jobs (4h)
-* `batch` → standard CPU jobs
-* `snowball` → large pool (likely main compute)
-* `vision` / `vision-fast` / `storm`→ GPU nodes
-* `pinky` → specialized partitions
-
----
-
-## Common Mistakes
-
-* Forgetting `--partition`
-* Not requesting GPU but running GPU code
-* Missing environment activation
-* Using too little memory → job crashes
-* Running heavy jobs on `playground`
